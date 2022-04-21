@@ -34,7 +34,7 @@ parameters:
     type: boolean
     default: true
     
-    workflows:
+workflows:
   on_commit:
       when: << pipeline.parameters.run-schedule >>
     jobs:
