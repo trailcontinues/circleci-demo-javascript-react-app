@@ -31,8 +31,8 @@ jobs:
           force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
 parameters:
   run-schedule:
-    type: boolean
-    default: false
+    type: string
+    default: true
     
 workflows:
   on_commit:
