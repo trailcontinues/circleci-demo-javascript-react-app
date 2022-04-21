@@ -43,15 +43,14 @@ workflows:
       #     filters:
       #       branches:
       #         only: master # only deploy when on main/master
-parameters:
-  run-schedule:
-    type: boolean
-    default: false
-
-workflows:
-  build-test-deploy:
-    when: << pipeline.parameters.run-schedule >>
-    
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"       
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - build_and_test
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
