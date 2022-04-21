@@ -29,13 +29,14 @@ jobs:
           at: ~/project
       - heroku/deploy-via-git: 
           force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+          
 parameters:
   run-schedule:
     type: boolean
     default: true
-
+    
 workflows:
-    when: << pipeline.parameters.run-schedule >>
+  on_commit:
     jobs:
       - build_and_test
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
@@ -47,15 +48,6 @@ workflows:
       #     filters:
       #       branches:
       #         only: master # only deploy when on main/master
-
     jobs:
+     when: << pipeline.parameters.run-schedule >>
       - build_and_test
-      # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
-      # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
-      # Read more: https://circleci.com/docs/2.0/env-vars/
-      # - deploy:
-      #     requires:
-      #       - build_and_test # only deploy if the build_and_test job has completed
-      #     filters:
-      #       branches:
-      #         only: master # only deploy when on main/master
