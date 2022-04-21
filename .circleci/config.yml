@@ -37,7 +37,7 @@ parameters:
 workflows:
   on_commit:
   when: << pipeline.parameters.run-schedule >>
-    jobs:
+  jobs:
       - build_and_test
       # Follow instructions here to authenticate git for Heroku: https://devcenter.heroku.com/articles/git#http-git-authentication
       # The following code may be uncommented, onnce HEROKU_API_KEY & HEROKU_APP_NAME environemnt variables are present
