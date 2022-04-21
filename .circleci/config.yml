@@ -45,7 +45,7 @@ workflows:
       #         only: master # only deploy when on main/master
 parameters:
   run-schedule:
-    type: string
+    type: boolean
     default: false
 
 workflows:
